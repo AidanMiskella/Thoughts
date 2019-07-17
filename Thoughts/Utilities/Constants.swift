@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+let THOUGHTS_REF = "Thoughts"
+
+let CATEGORY = "category"
+let NUM_COMMENTS = "numComments"
+let NUM_LIKES = "numLikes"
+let THOUGHT_TEXT = "thoughtText"
+let TIMESTAMP = "timestamp"
+let USERNAME = "username"
