@@ -8,5 +8,6 @@ target 'Thoughts' do
   # Pods for Thoughts
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
 
 end

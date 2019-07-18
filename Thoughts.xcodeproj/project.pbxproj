@@ -12,6 +12,8 @@
 		7412D53222DE8540005AD5BF /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412D53122DE8540005AD5BF /* Thought.swift */; };
 		7412D53422DE875B005AD5BF /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412D53322DE875B005AD5BF /* ThoughtCell.swift */; };
 		741DB0B522DCF4720097CFD3 /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741DB0B422DCF4720097CFD3 /* AddThoughtVC.swift */; };
+		749876AB22DFECAD006CE89B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749876AA22DFECAD006CE89B /* LoginVC.swift */; };
+		749876AD22DFF0ED006CE89B /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749876AC22DFF0ED006CE89B /* CreateUserVC.swift */; };
 		74D9298022DCEB9B0013868B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D9297F22DCEB9B0013868B /* AppDelegate.swift */; };
 		74D9298222DCEB9B0013868B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D9298122DCEB9B0013868B /* MainVC.swift */; };
 		74D9298522DCEB9B0013868B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D9298322DCEB9B0013868B /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		7412D53122DE8540005AD5BF /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		7412D53322DE875B005AD5BF /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 		741DB0B422DCF4720097CFD3 /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
+		749876AA22DFECAD006CE89B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		749876AC22DFF0ED006CE89B /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
 		74D9297C22DCEB9B0013868B /* Thoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D9297F22DCEB9B0013868B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74D9298122DCEB9B0013868B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			children = (
 				74D9298122DCEB9B0013868B /* MainVC.swift */,
 				741DB0B422DCF4720097CFD3 /* AddThoughtVC.swift */,
+				749876AA22DFECAD006CE89B /* LoginVC.swift */,
+				749876AC22DFF0ED006CE89B /* CreateUserVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D9298222DCEB9B0013868B /* MainVC.swift in Sources */,
+				749876AD22DFF0ED006CE89B /* CreateUserVC.swift in Sources */,
 				7412D53222DE8540005AD5BF /* Thought.swift in Sources */,
+				749876AB22DFECAD006CE89B /* LoginVC.swift in Sources */,
 				74D9298022DCEB9B0013868B /* AppDelegate.swift in Sources */,
 				741DB0B522DCF4720097CFD3 /* AddThoughtVC.swift in Sources */,
 				7412D53022DE7D57005AD5BF /* Constants.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum ThoughtCategory: String {
     
@@ -24,6 +25,9 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Varibles
     private var thoughts = [Thought]()
+    private var thoughtsCollectionRef: CollectionReference!
+    private var thoughtsListener: ListenerRegistration!
+    private var selectedCategory = ThoughtCategory.funny.rawValue
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,66 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
+        
+        thoughtsCollectionRef = Firestore.firestore().collection(THOUGHTS_REF)
+    }
+    
+    @IBAction func categoryChanged(_ sender: Any) {
+        
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            selectedCategory = ThoughtCategory.funny.rawValue
+        case 1:
+            selectedCategory = ThoughtCategory.serious.rawValue
+        case 2:
+            selectedCategory = ThoughtCategory.crazy.rawValue
+        default:
+            selectedCategory = ThoughtCategory.popular.rawValue
+        }
+        
+        thoughtsListener.remove()
+        setListener()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        setListener()
+    }
+    
+    func setListener() {
+        
+        if selectedCategory == ThoughtCategory.popular.rawValue {
+            
+            thoughtsListener = thoughtsCollectionRef
+                .order(by: NUM_LIKES, descending: true)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        
+                        self.thoughts.removeAll()
+                        self.thoughts = Thought.parseData(snapshot: snapshot)
+                        self.tableView.reloadData()
+                    }
+                }
+        } else {
+            
+            thoughtsListener = thoughtsCollectionRef
+                .whereField(CATEGORY, isEqualTo: selectedCategory)
+                .order(by: TIMESTAMP, descending: true)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        
+                        self.thoughts.removeAll()
+                        self.thoughts = Thought.parseData(snapshot: snapshot)
+                        self.tableView.reloadData()
+                    }
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +115,11 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        thoughtsListener.remove()
+    }
+    
 }
 
