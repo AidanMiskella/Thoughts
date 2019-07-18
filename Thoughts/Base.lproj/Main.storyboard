@@ -311,7 +311,6 @@
                     </view>
                     <connections>
                         <outlet property="createUserButton" destination="jQj-mU-loQ" id="6ec-mg-Tus"/>
-                        <outlet property="emailLabel" destination="vSb-nW-htJ" id="1VM-Ls-bhi"/>
                         <outlet property="emailText" destination="vSb-nW-htJ" id="m9z-eE-eLb"/>
                         <outlet property="loginButton" destination="OR4-8Q-xD2" id="YCW-Dj-ceD"/>
                         <outlet property="passwordText" destination="eYy-q3-bQx" id="gSm-WB-K2K"/>
@@ -371,7 +370,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="createUserButton:" destination="wCB-ta-NxJ" eventType="touchUpInside" id="jmq-wN-gkw"/>
                                     <action selector="createUserButtonTapped:" destination="wCB-ta-NxJ" eventType="touchUpInside" id="7dh-Sl-XHm"/>
                                 </connections>
                             </button>
@@ -387,7 +385,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButton:" destination="wCB-ta-NxJ" eventType="touchUpInside" id="J7m-UZ-Fl3"/>
                                     <action selector="cancelButtonTapped:" destination="wCB-ta-NxJ" eventType="touchUpInside" id="3xw-Rq-lD0"/>
                                 </connections>
                             </button>
