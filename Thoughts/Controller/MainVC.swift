@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 enum ThoughtCategory: String {
     
@@ -28,6 +29,7 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var thoughtsCollectionRef: CollectionReference!
     private var thoughtsListener: ListenerRegistration!
     private var selectedCategory = ThoughtCategory.funny.rawValue
+    private var handle: AuthStateDidChangeListenerHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,41 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         
         thoughtsCollectionRef = Firestore.firestore().collection(THOUGHTS_REF)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user == nil {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "loginVC")
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                
+                self.setListener()
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        if thoughtsListener != nil {
+            
+            thoughtsListener.remove()
+        }
+    }
+    
+    @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            
+            try firebaseAuth.signOut()
+        } catch let signoutError as NSError {
+            
+            debugPrint("Error signing out: \(signoutError)")
+        }
     }
     
     @IBAction func categoryChanged(_ sender: Any) {
@@ -54,11 +91,6 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
         thoughtsListener.remove()
-        setListener()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
         setListener()
     }
     
@@ -115,11 +147,5 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        thoughtsListener.remove()
-    }
-    
 }
 

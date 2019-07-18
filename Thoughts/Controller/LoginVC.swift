@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class LoginVC: UIViewController {
 
@@ -21,18 +23,23 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.layer.cornerRadius = 10
-        createUserButton.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 4
+        createUserButton.layer.cornerRadius = 4
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
+        guard let email = emailText.text,
+            let password = passwordText.text else { return }
         
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                
+                debugPrint("Error signing in: \(error)")
+            } else {
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
-    
-    @IBAction func createUserButtonTapped(_ sender: UIButton) {
-        
-        
-    }
-    
 }

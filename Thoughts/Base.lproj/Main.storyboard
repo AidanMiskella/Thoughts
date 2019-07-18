@@ -125,6 +125,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="THOUGHTS" id="u4Z-Un-8xD">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="26D-nm-uGq">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="BYZ-38-t0r" id="dci-lN-bxk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="addThoughtIcon" id="3sf-XD-GLe">
                             <connections>
                                 <segue destination="3SP-sy-nYC" kind="show" id="91S-5f-zqI"/>
@@ -225,7 +230,7 @@
         <!--LoginVC-->
         <scene sceneID="hcL-zM-Osz">
             <objects>
-                <viewController id="leR-1I-hoW" customClass="LoginVC" customModule="Thoughts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="leR-1I-hoW" customClass="LoginVC" customModule="Thoughts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xtO-iS-777">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +288,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="createUserButtonTapped:" destination="leR-1I-hoW" eventType="touchUpInside" id="FJm-Gj-FtK"/>
+                                    <segue destination="wCB-ta-NxJ" kind="show" id="Hac-oa-vY2"/>
                                 </connections>
                             </button>
                         </subviews>

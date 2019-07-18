@@ -24,8 +24,8 @@ class CreateUserVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createUserButton.layer.cornerRadius = 10
-        cancelButton.layer.cornerRadius = 10
+        createUserButton.layer.cornerRadius = 4
+        cancelButton.layer.cornerRadius = 4
     }
     
     @IBAction func createUserButtonTapped(_ sender: UIButton) {
