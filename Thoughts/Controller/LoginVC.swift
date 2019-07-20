@@ -18,8 +18,6 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createUserButton: UIButton!
     
-    // Variables
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

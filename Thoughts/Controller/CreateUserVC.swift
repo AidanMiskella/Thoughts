@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
 import FirebaseAuth
 
 class CreateUserVC: UIViewController {
@@ -19,8 +18,6 @@ class CreateUserVC: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var createUserButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    
-    // Variables
     
     override func viewDidLoad() {
         super.viewDidLoad()

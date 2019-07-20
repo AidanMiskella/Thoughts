@@ -25,6 +25,8 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
 
         postButton.layer.cornerRadius = 4
         thoughtText.layer.cornerRadius = 4
+        userNameText.text = CURRENT_USER?.displayName
+        userNameText.isEnabled = false
         thoughtText.text = "My random thought..."
         thoughtText.textColor = UIColor.lightGray
         thoughtText.delegate = self

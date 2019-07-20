@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2FB1446528EF75FA725D4EE3 /* Pods_Thoughts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68D3DF4359A596DA5658AC2 /* Pods_Thoughts.framework */; };
+		741206F022E3450E0016ADC9 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741206EF22E3450E0016ADC9 /* KeyboardBoundView.swift */; };
 		7412D53022DE7D57005AD5BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412D52F22DE7D57005AD5BF /* Constants.swift */; };
 		7412D53222DE8540005AD5BF /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412D53122DE8540005AD5BF /* Thought.swift */; };
 		7412D53422DE875B005AD5BF /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412D53322DE875B005AD5BF /* ThoughtCell.swift */; };
 		741DB0B522DCF4720097CFD3 /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741DB0B422DCF4720097CFD3 /* AddThoughtVC.swift */; };
+		746CA21A22E22A9E007AACEF /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746CA21922E22A9E007AACEF /* CommentsVC.swift */; };
+		746CA21E22E2317D007AACEF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746CA21D22E2317C007AACEF /* CommentCell.swift */; };
+		746CA22022E2343C007AACEF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746CA21F22E2343C007AACEF /* Comment.swift */; };
 		749876AB22DFECAD006CE89B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749876AA22DFECAD006CE89B /* LoginVC.swift */; };
 		749876AD22DFF0ED006CE89B /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749876AC22DFF0ED006CE89B /* CreateUserVC.swift */; };
 		74D9298022DCEB9B0013868B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D9297F22DCEB9B0013868B /* AppDelegate.swift */; };
@@ -24,10 +28,14 @@
 
 /* Begin PBXFileReference section */
 		0CD63E3C82C993EE0F7A73B5 /* Pods-Thoughts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thoughts.release.xcconfig"; path = "Target Support Files/Pods-Thoughts/Pods-Thoughts.release.xcconfig"; sourceTree = "<group>"; };
+		741206EF22E3450E0016ADC9 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardBoundView.swift; path = "../../../../Downloads/RNDM iOS Assets Part 2/KeyboardBoundView.swift"; sourceTree = "<group>"; };
 		7412D52F22DE7D57005AD5BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7412D53122DE8540005AD5BF /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		7412D53322DE875B005AD5BF /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 		741DB0B422DCF4720097CFD3 /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
+		746CA21922E22A9E007AACEF /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
+		746CA21D22E2317C007AACEF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		746CA21F22E2343C007AACEF /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		749876AA22DFECAD006CE89B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		749876AC22DFF0ED006CE89B /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
 		74D9297C22DCEB9B0013868B /* Thoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				7412D52F22DE7D57005AD5BF /* Constants.swift */,
+				741206EF22E3450E0016ADC9 /* KeyboardBoundView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -78,6 +87,7 @@
 				741DB0B422DCF4720097CFD3 /* AddThoughtVC.swift */,
 				749876AA22DFECAD006CE89B /* LoginVC.swift */,
 				749876AC22DFF0ED006CE89B /* CreateUserVC.swift */,
+				746CA21922E22A9E007AACEF /* CommentsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -86,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				7412D53122DE8540005AD5BF /* Thought.swift */,
+				746CA21F22E2343C007AACEF /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				7412D53322DE875B005AD5BF /* ThoughtCell.swift */,
+				746CA21D22E2317C007AACEF /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,12 +271,16 @@
 			files = (
 				74D9298222DCEB9B0013868B /* MainVC.swift in Sources */,
 				749876AD22DFF0ED006CE89B /* CreateUserVC.swift in Sources */,
+				741206F022E3450E0016ADC9 /* KeyboardBoundView.swift in Sources */,
 				7412D53222DE8540005AD5BF /* Thought.swift in Sources */,
 				749876AB22DFECAD006CE89B /* LoginVC.swift in Sources */,
 				74D9298022DCEB9B0013868B /* AppDelegate.swift in Sources */,
+				746CA21E22E2317D007AACEF /* CommentCell.swift in Sources */,
 				741DB0B522DCF4720097CFD3 /* AddThoughtVC.swift in Sources */,
 				7412D53022DE7D57005AD5BF /* Constants.swift in Sources */,
 				7412D53422DE875B005AD5BF /* ThoughtCell.swift in Sources */,
+				746CA22022E2343C007AACEF /* Comment.swift in Sources */,
+				746CA21A22E22A9E007AACEF /* CommentsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
