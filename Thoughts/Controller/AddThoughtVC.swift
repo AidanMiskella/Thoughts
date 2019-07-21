@@ -17,7 +17,6 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
     
     // Outlets
     @IBOutlet private weak var categorySegment: UISegmentedControl!
-    @IBOutlet private weak var userNameText: UITextField!
     @IBOutlet private weak var thoughtText: UITextView!
     @IBOutlet private weak var postButton: UIButton!
     
@@ -26,8 +25,6 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
 
         postButton.layer.cornerRadius = 4
         thoughtText.layer.cornerRadius = 4
-        userNameText.text = CURRENT_USER?.displayName
-        userNameText.isEnabled = false
         thoughtText.text = "My random thought..."
         thoughtText.textColor = UIColor.lightGray
         thoughtText.delegate = self
@@ -41,7 +38,7 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
         
-        guard let username = userNameText.text else { return }
+        guard let username = Auth.auth().currentUser?.displayName else { return }
         
         Firestore.firestore().collection(THOUGHTS_REF).addDocument(data: [
             CATEGORY : selectedCategory,

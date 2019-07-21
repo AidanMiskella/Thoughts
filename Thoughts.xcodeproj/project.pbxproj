@@ -23,8 +23,8 @@
 		74D9298722DCEB9C0013868B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D9298622DCEB9C0013868B /* Assets.xcassets */; };
 		74D9298A22DCEB9C0013868B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D9298822DCEB9C0013868B /* LaunchScreen.storyboard */; };
 		74F7A68A22E473830078CD1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74F7A68922E473820078CD1F /* GoogleService-Info.plist */; };
-		74F7A68C22E473EE0078CD1F /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F7A68B22E473EE0078CD1F /* KeyboardBoundView.swift */; };
 		74F7A68E22E48FC70078CD1F /* UpdateCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F7A68D22E48FC70078CD1F /* UpdateCommentVC.swift */; };
+		74F7A69022E4A0D10078CD1F /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F7A68F22E4A0D10078CD1F /* KeyboardBoundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +46,8 @@
 		74D9298922DCEB9C0013868B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74D9298B22DCEB9C0013868B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74F7A68922E473820078CD1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		74F7A68B22E473EE0078CD1F /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardBoundView.swift; path = "RNDM iOS Assets Part 2/KeyboardBoundView.swift"; sourceTree = SOURCE_ROOT; };
 		74F7A68D22E48FC70078CD1F /* UpdateCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommentVC.swift; sourceTree = "<group>"; };
+		74F7A68F22E4A0D10078CD1F /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = SOURCE_ROOT; };
 		8405C7913F0EA5C37E19A2AB /* Pods-Thoughts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thoughts.debug.xcconfig"; path = "Target Support Files/Pods-Thoughts/Pods-Thoughts.debug.xcconfig"; sourceTree = "<group>"; };
 		A68D3DF4359A596DA5658AC2 /* Pods_Thoughts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thoughts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				7412D52F22DE7D57005AD5BF /* Constants.swift */,
-				74F7A68B22E473EE0078CD1F /* KeyboardBoundView.swift */,
+				74F7A68F22E4A0D10078CD1F /* KeyboardBoundView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -275,8 +275,8 @@
 				74D9298222DCEB9B0013868B /* MainVC.swift in Sources */,
 				749876AD22DFF0ED006CE89B /* CreateUserVC.swift in Sources */,
 				7412D53222DE8540005AD5BF /* Thought.swift in Sources */,
-				74F7A68C22E473EE0078CD1F /* KeyboardBoundView.swift in Sources */,
 				74F7A68E22E48FC70078CD1F /* UpdateCommentVC.swift in Sources */,
+				74F7A69022E4A0D10078CD1F /* KeyboardBoundView.swift in Sources */,
 				749876AB22DFECAD006CE89B /* LoginVC.swift in Sources */,
 				74D9298022DCEB9B0013868B /* AppDelegate.swift in Sources */,
 				746CA21E22E2317D007AACEF /* CommentCell.swift in Sources */,

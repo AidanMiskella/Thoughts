@@ -20,11 +20,6 @@ enum ThoughtCategory: String {
 
 class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, ThoughtDelegate {
     
-    func thoughtOptionsTapped(thought: Thought) {
-        
-        print("Hi")
-    }
-    
     // Outlets
     @IBOutlet private weak var segmentControl: UISegmentedControl!
     @IBOutlet private weak var tableView: UITableView!
@@ -68,6 +63,40 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, Thou
             
             thoughtsListener.remove()
         }
+    }
+    
+    func thoughtOptionsTapped(thought: Thought) {
+        
+        let alert = UIAlertController(title: "Delete", message: "Do you want to delete yur thought", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete Thought", style: .default) { (action) in
+            
+            self.delete(collection: Firestore.firestore().collection(THOUGHTS_REF).document(thought.documentId)
+                .collection(COMMENTS_REF), completion: { (error) in
+                    if let error = error {
+                        
+                        debugPrint("Error deleting subcollection: \(error.localizedDescription)")
+                    } else {
+                        
+                        Firestore.firestore().collection(THOUGHTS_REF).document(thought.documentId)
+                            .delete(completion: { (error) in
+                                
+                                if let error = error {
+                                    
+                                    debugPrint("Error deleting thought: \(error.localizedDescription)")
+                                } else {
+                                    
+                                    alert.dismiss(animated: true, completion: nil)
+                                }
+                            })
+                    }
+            })
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
@@ -167,6 +196,38 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, Thou
                 if let thought = sender as? Thought {
                     
                     destinationVC.thought = thought
+                }
+            }
+        }
+    }
+    
+    func delete(collection: CollectionReference, batchSize: Int = 100, completion: @escaping (Error?) -> ()) {
+        
+        collection.limit(to: batchSize).getDocuments { (docset, error) in
+            guard let docset = docset else {
+                
+                completion(error)
+                return
+            }
+      
+            guard docset.count > 0 else {
+                
+                completion(nil)
+                return
+            }
+         
+            let batch = collection.firestore.batch()
+            
+            docset.documents.forEach {batch.deleteDocument($0.reference)}
+        
+            batch.commit { (batchError) in
+                
+                if let batchError = batchError {
+                    
+                    completion(batchError)
+                } else {
+                    
+                    self.delete(collection: collection, batchSize: batchSize, completion: completion)
                 }
             }
         }
