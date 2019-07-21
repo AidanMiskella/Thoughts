@@ -18,7 +18,12 @@ enum ThoughtCategory: String {
     case popular = "Popular"
 }
 
-class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, ThoughtDelegate {
+    
+    func thoughtOptionsTapped(thought: Thought) {
+        
+        print("Hi")
+    }
     
     // Outlets
     @IBOutlet private weak var segmentControl: UISegmentedControl!
@@ -139,7 +144,7 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "thoughtCell", for: indexPath) as? ThoughtCell {
             
-            cell.configureCell(thought: thoughts[indexPath.row])
+            cell.configureCell(thought: thoughts[indexPath.row], delegate: self)
             
             return cell
         } else {

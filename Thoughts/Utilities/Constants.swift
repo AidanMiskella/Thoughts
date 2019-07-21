@@ -21,6 +21,7 @@ let THOUGHT_TEXT = "thoughtText"
 let TIMESTAMP = "timestamp"
 let USERNAME = "username"
 let COMMENT_TEXT = "commentText"
+let USER_ID = "userId"
 
 let CURRENT_USER = Auth.auth().currentUser
 let DATE_CREATED = "dateCreated"

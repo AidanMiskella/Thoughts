@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CommentDelegate {
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -63,6 +63,71 @@ class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         commentListener.remove()
     }
     
+    func commentOptionsTapped(comment: Comment) {
+
+        let alert = UIAlertController(title: "Edit Comment", message: "You can delete or edit", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete Comment", style: .default) { (action) in
+            
+            self.firestore.runTransaction({ (transaction, errorPointer) -> Any? in
+                
+                let thoughtDocument: DocumentSnapshot
+                
+                do {
+                    
+                    try thoughtDocument = transaction.getDocument(self.firestore
+                        .collection(THOUGHTS_REF).document(self.thought.documentId))
+                } catch let error as NSError{
+                    
+                    debugPrint("Fetch error: \(error.localizedDescription)")
+                    return nil
+                }
+                
+                guard let oldNumComments = thoughtDocument.data()![NUM_COMMENTS] as? Int else { return nil }
+                
+                transaction.updateData([NUM_COMMENTS : oldNumComments - 1], forDocument: self.thoughtRef)
+                
+                let commentRef = self.firestore.collection(THOUGHTS_REF).document(self.thought.documentId)
+                    .collection(COMMENTS_REF).document(comment.documentId)
+                
+                transaction.deleteDocument(commentRef)
+                
+                return nil
+            }) { (object, error) in
+                
+                if let error = error {
+                    
+                    debugPrint("Transaction failed \(error)")
+                } else {
+                    
+                    alert.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
+        let editAction = UIAlertAction(title: "Edit Comment", style: .default) { (action) in
+            
+            self.performSegue(withIdentifier: "toEditComment", sender: (comment, self.thought))
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(editAction)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? UpdateCommentVC {
+            
+            if let commentData = sender as? (comment: Comment, thought: Thought) {
+                
+                destination.commentData = commentData
+            }
+        }
+    }
+    
     @IBAction func addCommentTapped(_ sender: Any) {
         
         guard let commentText = addCommentText.text else { return }
@@ -90,7 +155,8 @@ class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             transaction.setData([
                 COMMENT_TEXT : commentText,
                 TIMESTAMP : FieldValue.serverTimestamp(),
-                USERNAME : self.username!
+                USERNAME : self.username!,
+                USER_ID : Auth.auth().currentUser?.uid ?? ""
                 ], forDocument: newCommentRef, merge: true)
             
             return nil
@@ -116,7 +182,7 @@ class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentCell {
             
-            cell.configureCell(comment: comments[indexPath.row])
+            cell.configureCell(comment: comments[indexPath.row], delegate: self)
             return cell
         }
         
